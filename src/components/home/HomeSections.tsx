@@ -107,8 +107,8 @@ export function AboutSection() {
         <motion.div {...fadeUp} className="relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={KICKZONE.heroImage}
-            alt="Indoor football turf (illustrative stock photo — not the actual Kick-Zone venue)"
+            src="/venue-6.jpg"
+            alt="Aerial view of the full Kick-Zone pitch during a match"
             className="h-80 w-full rounded-2xl border border-[#2B3237] object-cover"
             loading="lazy"
           />
@@ -189,7 +189,7 @@ export function GalleryPreview() {
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#39FF14]">Gallery</p>
             <h2 className="font-sport mt-2 text-3xl font-black">FEEL THE TURF.</h2>
-            <p className="mt-1 text-sm text-[#A5ADB4]">Illustrative stock photos — not the actual venue.</p>
+            <p className="mt-1 text-sm text-[#A5ADB4]">Genuine photos from the Kick-Zone turf.</p>
           </div>
           <Link href="/gallery" className="hidden items-center gap-2 rounded-full border border-[#2B3237] px-5 py-2.5 text-sm font-bold hover:border-[#39FF14] sm:inline-flex">
             View all <ArrowRight size={16} />

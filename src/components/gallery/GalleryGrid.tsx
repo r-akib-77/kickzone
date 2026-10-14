@@ -51,7 +51,7 @@ export default function GalleryGrid() {
         ))}
       </div>
       <p className="mt-3 text-xs text-[#A5ADB4]">
-        Illustrative stock photography — these are not photos of the actual Kick-Zone venue.
+        Genuine photos from the Kick-Zone turf, Mirpur 12.
       </p>
 
       {index !== null && (

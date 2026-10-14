@@ -18,29 +18,29 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="animate-hero-zoom absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${KICKZONE.heroImage})` }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#080A0B]/80 via-[#080A0B]/70 to-[#080A0B]" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#39FF14]/40 bg-black/60 px-4 py-1.5 text-xs font-bold text-[#39FF14]">
+            <div className="animate-rise inline-flex items-center gap-2 rounded-full border border-[#39FF14]/40 bg-black/60 px-4 py-1.5 text-xs font-bold text-[#39FF14]">
               <MapPin size={14} /> {KICKZONE.location.full} · Indoor Turf
             </div>
-            <h1 className="font-sport mt-4 text-5xl font-black leading-[0.95] sm:text-7xl">
+            <h1 className="animate-rise font-sport mt-4 text-5xl font-black leading-[0.95] sm:text-7xl" style={{ animationDelay: "0.08s" }}>
               OWN THE
               <br />
               <span className="text-[#39FF14]">PITCH.</span>
             </h1>
-            <p className="font-sport mt-3 text-lg font-bold text-white sm:text-xl">
+            <p className="animate-rise font-sport mt-3 text-lg font-bold text-white sm:text-xl" style={{ animationDelay: "0.16s" }}>
               Your Game. Your Team. Your Zone.
             </p>
-            <p className="mt-3 max-w-lg leading-relaxed text-[#A5ADB4]">
+            <p className="animate-rise mt-3 max-w-lg leading-relaxed text-[#A5ADB4]" style={{ animationDelay: "0.24s" }}>
               Book your football session at Kick-Zone, Mirpur 12. Bring your squad,
               choose your preferred time, and get ready to play.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="animate-rise mt-6 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: "0.32s" }}>
               <Link
                 href="/book"
                 className="btn-neon inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-sm"
@@ -54,7 +54,7 @@ export default function HomePage() {
                 Explore the Turf
               </Link>
             </div>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-[#A5ADB4]">
+            <div className="animate-rise mt-6 flex flex-wrap items-center gap-4 text-sm text-[#A5ADB4]" style={{ animationDelay: "0.4s" }}>
               <span className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-[#39FF14]" /> 90-min sessions
               </span>
