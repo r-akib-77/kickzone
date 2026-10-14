@@ -16,6 +16,7 @@ import {
   Timer,
 } from "lucide-react";
 import { KICKZONE } from "@/config/kickzone";
+import { formatBDT } from "@/lib/booking/pricing";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const fadeUp = {
@@ -42,7 +43,7 @@ export function QuickBookingWidget() {
             <div>
               <p className="text-xs uppercase tracking-wider text-[#A5ADB4]">Session price</p>
               <p className="text-sm font-bold text-white">
-                {KICKZONE.sessionPriceLabel} <span className="font-normal text-[#A5ADB4]">illustrative</span>
+                Day {formatBDT(KICKZONE.daySessionPriceBDT)} · Night {formatBDT(KICKZONE.nightSessionPriceBDT)}
               </p>
             </div>
           </div>
@@ -213,8 +214,8 @@ export function PricingTeaser() {
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <SectionHeading
         kicker="Pricing"
-        title={<>ONE SESSION. ONE PRICE.</>}
-        sub="Fixed 90-minute football turf session. Illustrative demo price only."
+        title={<>DAY & NIGHT SESSIONS.</>}
+        sub="Fixed 90-minute football turf sessions. Day rate before 5 PM, night rate from 5 PM. Illustrative demo prices."
       />
       <div className="mx-auto mt-8 max-w-md">
         <div className="rounded-2xl border border-[#39FF14]/40 bg-[#111416] p-6 text-center shadow-[0_0_40px_rgba(57,255,20,0.12)]">
@@ -223,10 +224,16 @@ export function PricingTeaser() {
           <p className="mt-1 flex items-center justify-center gap-2 text-sm text-[#A5ADB4]">
             <Clock size={14} /> Match Duration: 1 Hour 30 Minutes
           </p>
-          <p className="font-sport mt-3 text-4xl font-black text-[#39FF14]">
-            {KICKZONE.sessionPriceLabel}
-            <span className="ml-1 align-middle text-sm font-normal text-[#A5ADB4]">/ 90 min</span>
-          </p>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center justify-between rounded-xl bg-[#171B1E] px-4 py-3">
+              <span className="text-sm font-bold text-white">Day <span className="font-normal text-[#A5ADB4]">· before 5 PM</span></span>
+              <span className="font-sport text-xl font-black text-[#39FF14]">{formatBDT(KICKZONE.daySessionPriceBDT)}</span>
+            </div>
+            <div className="flex items-center justify-between rounded-xl bg-[#171B1E] px-4 py-3">
+              <span className="text-sm font-bold text-white">Night <span className="font-normal text-[#A5ADB4]">· from 5 PM</span></span>
+              <span className="font-sport text-xl font-black text-[#39FF14]">{formatBDT(KICKZONE.nightSessionPriceBDT)}</span>
+            </div>
+          </div>
           <p className="mt-2 text-xs text-[#A5ADB4]">{KICKZONE.priceNote}</p>
           <Link href="/book" className="btn-neon mt-5 block rounded-full px-6 py-3 text-sm">
             Book Your Slot

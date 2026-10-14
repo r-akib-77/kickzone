@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { KICKZONE } from "@/config/kickzone";
+import { formatBDT } from "@/lib/booking/pricing";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default function FacilitiesPage() {
       </div>
       <div className="mt-8 rounded-2xl border border-[#39FF14]/30 bg-[#111416] p-6 text-center">
         <p className="font-sport text-xl font-black">MATCH DURATION: 1 HOUR 30 MINUTES</p>
-        <p className="mt-1 text-sm text-[#A5ADB4]">All sessions are fixed 90-minute slots at {KICKZONE.sessionPriceLabel} (illustrative).</p>
+        <p className="mt-1 text-sm text-[#A5ADB4]">All sessions are fixed 90-minute slots — day {formatBDT(KICKZONE.daySessionPriceBDT)}, night {formatBDT(KICKZONE.nightSessionPriceBDT)} (illustrative).</p>
         <Link href="/book" className="btn-neon mt-4 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm">
           Book Your Slot <ArrowRight size={16} />
         </Link>

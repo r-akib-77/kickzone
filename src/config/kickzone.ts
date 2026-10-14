@@ -27,10 +27,13 @@ export const KICKZONE = {
   bookingDurationLabel: "1 Hour 30 Minutes",
 
   // Illustrative demo pricing (NOT confirmed as the real price)
-  sessionPriceBDT: 3000,
-  sessionPriceLabel: "৳3,000",
+  // Day slots start below nightStartsAt; night slots start at/after it.
+  daySessionPriceBDT: 3000,
+  nightSessionPriceBDT: 4000,
+  nightStartsAt: "17:00",
+  sessionPriceLabel: "from ৳3,000",
   priceNote:
-    "Illustrative demo price. Contact Kick-Zone at 01973-613818 to confirm the actual session price.",
+    "Illustrative demo prices — day slots (before 5 PM) ৳3,000, night slots (5 PM onwards) ৳4,000. Contact Kick-Zone at 01973-613818 to confirm actual prices.",
 
   // Illustrative demo operating hours (NOT confirmed)
   openingTime: "08:00",

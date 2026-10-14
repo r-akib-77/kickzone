@@ -27,7 +27,7 @@ import {
   weekdayLong,
   dateDisplayLong,
 } from "@/lib/booking/availability";
-import { getSessionPrice, formatBDT } from "@/lib/booking/pricing";
+import { getSessionPrice, getSessionPriceForStart, getSlotRateLabel, getNightStartsDisplay, formatBDT } from "@/lib/booking/pricing";
 import { validateCustomer, type ValidationErrors } from "@/lib/booking/validation";
 import { generateDemoReference } from "@/lib/booking/demo-reference";
 import type { BookingSlot, CustomerDetails, BookingStep } from "@/types/booking";
@@ -185,7 +185,8 @@ export default function BookingFlow() {
     setSlot(null);
   }, [dateISO]);
 
-  const price = getSessionPrice();
+  const price = slot ? getSessionPriceForStart(slot.start) : getSessionPrice();
+  const rateLabel = slot ? getSlotRateLabel(slot.start) : null;
 
   function canGoStep2() {
     return !!dateISO;
@@ -259,7 +260,7 @@ export default function BookingFlow() {
                 <h2 className="font-sport text-xl font-black">STEP 2 — CHOOSE A 90-MIN SLOT</h2>
                 <p className="mt-1 text-sm text-[#A5ADB4]">
                   {dateDisplayLong(dateISO)} · {weekdayLong(dateISO)} · Match Duration: 1 Hour 30 Minutes ·{" "}
-                  {availableCount} available (demo)
+                  {availableCount} available (demo) · Day {formatBDT(KICKZONE.daySessionPriceBDT)} / Night {formatBDT(KICKZONE.nightSessionPriceBDT)}
                 </p>
                 <p className="mt-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
                   Demo availability only — not live or connected to the actual turf schedule.
@@ -297,7 +298,7 @@ export default function BookingFlow() {
                             {s.status === "available" ? "Available" : s.status === "past" ? "Past" : "Booked"}
                           </span>
                         </span>
-                        <span className="mt-1 block text-xs text-[#A5ADB4]">90 min · ends {s.endDisplay}</span>
+                        <span className="mt-1 block text-xs text-[#A5ADB4]">90 min · ends {s.endDisplay} · {formatBDT(getSessionPriceForStart(s.start))}</span>
                       </button>
                     );
                   })}
@@ -423,7 +424,7 @@ export default function BookingFlow() {
                     <div><dt className="text-[#A5ADB4]">Start</dt><dd className="font-bold text-[#39FF14]">{slot?.startDisplay}</dd></div>
                     <div><dt className="text-[#A5ADB4]">End</dt><dd className="font-bold text-[#39FF14]">{slot?.endDisplay}</dd></div>
                     <div><dt className="text-[#A5ADB4]">Duration</dt><dd className="font-bold">1 hour 30 minutes (fixed)</dd></div>
-                    <div><dt className="text-[#A5ADB4]">Price</dt><dd className="font-bold">{formatBDT(price)} <span className="font-normal text-[#A5ADB4]">illustrative</span></dd></div>
+                    <div><dt className="text-[#A5ADB4]">Price</dt><dd className="font-bold">{formatBDT(price)} <span className="font-normal text-[#A5ADB4]">illustrative{rateLabel ? ` · ${rateLabel}` : ""}</span></dd></div>
                     <div><dt className="text-[#A5ADB4]">Name</dt><dd className="font-bold">{customer.fullName || "—"}</dd></div>
                     <div><dt className="text-[#A5ADB4]">Phone</dt><dd className="font-bold">{customer.phone || "—"}</dd></div>
                     {customer.email && <div><dt className="text-[#A5ADB4]">Email</dt><dd className="font-bold">{customer.email}</dd></div>}
@@ -471,7 +472,7 @@ export default function BookingFlow() {
                     <div className="flex justify-between"><dt className="text-[#A5ADB4]">Date</dt><dd className="font-bold">{dateDisplayLong(dateISO)} ({weekdayLong(dateISO)})</dd></div>
                     <div className="flex justify-between"><dt className="text-[#A5ADB4]">Time</dt><dd className="font-bold">{slot?.startDisplay} – {slot?.endDisplay}</dd></div>
                     <div className="flex justify-between"><dt className="text-[#A5ADB4]">Duration</dt><dd className="font-bold">1 hour 30 minutes</dd></div>
-                    <div className="flex justify-between"><dt className="text-[#A5ADB4]">Price</dt><dd className="font-bold">{formatBDT(price)} (illustrative)</dd></div>
+                    <div className="flex justify-between"><dt className="text-[#A5ADB4]">Price</dt><dd className="font-bold">{formatBDT(price)} (illustrative{rateLabel ? ` · ${rateLabel}` : ""})</dd></div>
                     <div className="flex justify-between"><dt className="text-[#A5ADB4]">Name</dt><dd className="font-bold">{customer.fullName}</dd></div>
                     <div className="flex justify-between"><dt className="text-[#A5ADB4]">Phone</dt><dd className="font-bold">{customer.phone}</dd></div>
                   </dl>
@@ -501,10 +502,10 @@ export default function BookingFlow() {
             <p><span className="text-[#A5ADB4]">Date: </span><span className="font-bold">{dateDisplayLong(dateISO)}</span></p>
             <p><span className="text-[#A5ADB4]">Slot: </span><span className="font-bold">{slot ? `${slot.startDisplay} – ${slot.endDisplay}` : "Not selected"}</span></p>
             <p><span className="text-[#A5ADB4]">Duration: </span><span className="font-bold">1 Hour 30 Minutes</span></p>
-            <p><span className="text-[#A5ADB4]">Price: </span><span className="font-bold text-[#39FF14]">{formatBDT(price)}</span> <span className="text-xs text-[#A5ADB4]">illustrative</span></p>
+            <p><span className="text-[#A5ADB4]">Price: </span><span className="font-bold text-[#39FF14]">{formatBDT(price)}</span> <span className="text-xs text-[#A5ADB4]">illustrative{rateLabel ? ` · ${rateLabel}` : ""}</span></p>
           </div>
           <div className="mt-4 rounded-xl bg-[#171B1E] p-3 text-xs leading-relaxed text-[#A5ADB4]">
-            Fixed {KICKZONE.bookingDurationMinutes}-minute sessions only. Hours {KICKZONE.openingTime}–{KICKZONE.closingTime} (illustrative). Availability is demo data.
+            Fixed {KICKZONE.bookingDurationMinutes}-minute sessions only. Hours {KICKZONE.openingTime}–{KICKZONE.closingTime} (illustrative). Day slots before {getNightStartsDisplay()} {formatBDT(KICKZONE.daySessionPriceBDT)} · night from {getNightStartsDisplay()} {formatBDT(KICKZONE.nightSessionPriceBDT)}. Availability is demo data.
           </div>
           <a href={KICKZONE.phone.telHref} className="mt-3 flex items-center justify-center gap-2 rounded-full border border-[#2B3237] px-4 py-2.5 text-sm font-bold hover:border-[#39FF14]">
             <Phone size={15} /> {KICKZONE.phone.display}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, Facebook, Instagram, MapPin } from "lucide-react";
 import { KICKZONE } from "@/config/kickzone";
+import { formatBDT } from "@/lib/booking/pricing";
 
 export default function Footer() {
   return (
@@ -66,7 +67,7 @@ export default function Footer() {
           <div className="mt-3 rounded-xl border border-[#2B3237] bg-[#171B1E] p-4">
             <p className="font-sport text-2xl font-black text-[#39FF14]">90 MIN</p>
             <p className="text-sm text-[#A5ADB4]">Match Duration: 1 Hour 30 Minutes</p>
-            <p className="mt-1 text-sm font-bold text-white">{KICKZONE.sessionPriceLabel} <span className="font-normal text-[#A5ADB4]">/ session (illustrative)</span></p>
+            <p className="mt-1 text-sm font-bold text-white">Day {formatBDT(KICKZONE.daySessionPriceBDT)} · Night {formatBDT(KICKZONE.nightSessionPriceBDT)} <span className="font-normal text-[#A5ADB4]">/ session (illustrative)</span></p>
             <Link href="/book" className="btn-neon mt-3 block rounded-full px-4 py-2.5 text-center text-sm">
               Book Your Slot
             </Link>
