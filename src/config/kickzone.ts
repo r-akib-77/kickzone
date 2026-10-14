@@ -1,6 +1,6 @@
 export const KICKZONE = {
   businessName: "Kick-Zone",
-  businessType: "Indoor football turf",
+  businessType: "Outdoor football turf",
   location: {
     area: "Mirpur 12",
     city: "Dhaka",
@@ -67,7 +67,7 @@ export const KICKZONE = {
     {
       title: "FIFA-Grade Artificial Turf",
       description:
-        "Consistent bounce, cushioned underlay and all-weather indoor surface built for fast 5v5 / 7v7 football.",
+        "Consistent bounce, cushioned underlay and all-weather outdoor surface built for fast 5v5 / 7v7 football.",
       image: "/venue-6.jpg",
       icon: "turf",
     },
@@ -95,7 +95,7 @@ export const KICKZONE = {
     {
       title: "Spectator Zone",
       description:
-        "Sideline seating for friends and subs to watch the game up close in a safe indoor hall.",
+        "Sideline seating for friends and subs to watch the game up close in a safe outdoor venue.",
       image: "/venue-7.jpg",
       icon: "users",
     },

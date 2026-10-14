@@ -26,7 +26,7 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24">
           <div className="max-w-2xl">
             <div className="animate-rise inline-flex items-center gap-2 rounded-full border border-[#39FF14]/40 bg-black/60 px-4 py-1.5 text-xs font-bold text-[#39FF14]">
-              <MapPin size={14} /> {KICKZONE.location.full} · Indoor Turf
+              <MapPin size={14} /> {KICKZONE.location.full} · Outdoor Turf
             </div>
             <h1 className="animate-rise font-sport mt-4 text-5xl font-black leading-[0.95] sm:text-7xl" style={{ animationDelay: "0.08s" }}>
               OWN THE

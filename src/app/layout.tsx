@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Kick-Zone | Indoor Football Turf — Mirpur 12, Dhaka",
+  title: "Kick-Zone | Outdoor Football Turf — Mirpur 12, Dhaka",
   description:
     "Book your 90-minute football session at Kick-Zone, Mirpur 12, Dhaka. Demo booking website — call 01973-613818 to confirm a real booking.",
 };

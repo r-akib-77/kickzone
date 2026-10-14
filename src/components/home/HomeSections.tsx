@@ -72,7 +72,7 @@ export function AboutSection() {
             MIRPUR 12&apos;S HOME FOR SERIOUS FOOTBALL.
           </h2>
           <p className="mt-4 leading-relaxed text-[#A5ADB4]">
-            Kick-Zone is an indoor football turf in Mirpur 12, Dhaka — built for
+            Kick-Zone is an outdoor football turf in Mirpur 12, Dhaka — built for
             5v5 and 7v7 battles under lights. Every session is a fixed{" "}
             <span className="font-bold text-white">90-minute (1 hour 30 minutes)</span>{" "}
             match slot. Pick your date, grab your preferred time, and bring your squad.
@@ -80,7 +80,7 @@ export function AboutSection() {
           <div className="mt-5 grid grid-cols-3 gap-3">
             {[
               { icon: Timer, label: "90-min sessions" },
-              { icon: Zap, label: "Indoor turf" },
+              { icon: Zap, label: "Outdoor turf" },
               { icon: ShieldCheck, label: "Demo booking" },
             ].map((f) => (
               <div
@@ -114,7 +114,7 @@ export function AboutSection() {
           />
           <div className="absolute bottom-4 left-4 rounded-xl bg-[#080A0B]/90 px-4 py-3 backdrop-blur">
             <p className="font-sport text-xl font-black text-[#39FF14]">OWN THE PITCH</p>
-            <p className="text-xs text-[#A5ADB4]">Mirpur 12 · Dhaka · Indoor turf</p>
+            <p className="text-xs text-[#A5ADB4]">Mirpur 12 · Dhaka · Outdoor turf</p>
           </div>
         </motion.div>
       </div>

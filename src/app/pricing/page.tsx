@@ -96,7 +96,7 @@ export default function PricingPage() {
       <div className="mx-auto mt-4 max-w-2xl rounded-3xl border border-[#2B3237] bg-[#111416] p-6 text-center">
         <ul className="space-y-2 text-left text-sm">
           {[
-            "Full indoor turf access for your squad",
+            "Full outdoor turf access for your squad",
             "Fixed 90-minute slot with auto end-time",
             "Open daily 6:00 AM – 3:30 AM (14 fixed slots)",
             "Demo booking — call to confirm real availability",

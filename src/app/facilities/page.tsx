@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Facilities | Kick-Zone Mirpur 12",
-  description: "Explore Kick-Zone indoor turf facilities (illustrative demo content).",
+  description: "Explore Kick-Zone outdoor turf facilities (illustrative demo content).",
 };
 
 export default function FacilitiesPage() {

@@ -20,7 +20,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-[#A5ADB4]">
-            Indoor football turf at {KICKZONE.location.full}. Bring your squad,
+            Outdoor football turf at {KICKZONE.location.full}. Bring your squad,
             pick a 90-minute slot, and own the pitch.
           </p>
           <p className="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
