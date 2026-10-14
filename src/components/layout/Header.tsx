@@ -77,12 +77,17 @@ export default function Header() {
         </button>
       </div>
 
-      {open && (
+      <div
+        className={`grid transition-all duration-300 ease-in-out motion-reduce:transition-none md:hidden ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
         <nav
-          className="border-t border-[#2B3237] bg-[#111416] px-4 py-4 md:hidden"
+          className={`overflow-hidden bg-[#111416] ${open ? "visible" : "invisible"}`}
           aria-label="Mobile"
+          aria-hidden={!open}
         >
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1.5 border-t border-[#2B3237] px-4 py-5">
             {LINKS.map((l) => {
               const active = pathname === l.href;
               return (
@@ -90,7 +95,8 @@ export default function Header() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className={`rounded-lg px-3 py-2.5 text-sm font-semibold ${
+                  tabIndex={open ? 0 : -1}
+                  className={`rounded-xl px-4 py-3.5 text-base font-semibold ${
                     active
                       ? "bg-[#171B1E] text-[#39FF14]"
                       : "text-[#A5ADB4] hover:bg-[#171B1E] hover:text-white"
@@ -103,19 +109,21 @@ export default function Header() {
             <Link
               href="/book"
               onClick={() => setOpen(false)}
-              className="btn-neon mt-2 rounded-full px-5 py-3 text-center text-sm"
+              tabIndex={open ? 0 : -1}
+              className="btn-neon mt-2 rounded-full px-5 py-4 text-center text-base"
             >
               Book Your Slot
             </Link>
             <a
               href={KICKZONE.phone.telHref}
-              className="mt-1 flex items-center justify-center gap-2 rounded-full border border-[#2B3237] px-5 py-3 text-sm font-semibold text-white"
+              tabIndex={open ? 0 : -1}
+              className="mt-1 flex items-center justify-center gap-2 rounded-full border border-[#2B3237] px-5 py-4 text-base font-semibold text-white"
             >
-              <Phone size={16} /> {KICKZONE.phone.display}
+              <Phone size={18} /> {KICKZONE.phone.display}
             </a>
           </div>
         </nav>
-      )}
+      </div>
     </header>
   );
 }
