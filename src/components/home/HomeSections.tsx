@@ -28,7 +28,7 @@ const fadeUp = {
 export function QuickBookingWidget() {
   return (
     <div className="mx-auto -mt-10 max-w-4xl px-4 sm:px-6">
-      <div className="rounded-2xl border border-[#2B3237] bg-[#111416]/95 p-4 shadow-2xl sm:p-5">
+      <div className="relative z-10 rounded-2xl border border-[#3A444B] bg-[#111416] p-4 shadow-2xl sm:p-5">
         <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
           <div className="flex flex-1 items-center gap-3 rounded-xl bg-[#171B1E] px-4 py-3">
             <Clock className="shrink-0 text-[#39FF14]" size={20} />
