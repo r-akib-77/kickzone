@@ -1,0 +1,149 @@
+import { KICKZONE } from "@/config/kickzone";
+import type { BookingSlot } from "@/types/booking";
+
+export function timeStringToMinutes(t: string): number {
+  const [h, m] = t.split(":").map(Number);
+  return h * 60 + m;
+}
+
+export function minutesToTimeString(mins: number): string {
+  const h = Math.floor(mins / 60) % 24;
+  const m = mins % 60;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+export function to12hDisplay(t24: string): string {
+  const [hRaw, mRaw] = t24.split(":");
+  let h = Number(hRaw);
+  const m = mRaw;
+  const ampm = h >= 12 ? "PM" : "AM";
+  h = h % 12;
+  if (h === 0) h = 12;
+  return `${h}:${m} ${ampm}`;
+}
+
+export function addMinutes(t24: string, mins: number): string {
+  return minutesToTimeString(timeStringToMinutes(t24) + mins);
+}
+
+/** YYYY-MM-DD in Asia/Dhaka */
+export function getDhakaTodayISO(now = new Date()): string {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: KICKZONE.timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+  return parts; // en-CA yields YYYY-MM-DD
+}
+
+export function toISODate(y: number, m0: number, d: number): string {
+  return `${y}-${String(m0 + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+}
+
+export function parseISODate(iso: string): { y: number; m0: number; d: number } {
+  const [y, m, d] = iso.split("-").map(Number);
+  return { y, m0: m - 1, d };
+}
+
+export function weekdayLong(iso: string): string {
+  const { y, m0, d } = parseISODate(iso);
+  return new Date(y, m0, d).toLocaleDateString("en-GB", { weekday: "long" });
+}
+
+export function dateDisplayLong(iso: string): string {
+  const { y, m0, d } = parseISODate(iso);
+  return new Date(y, m0, d).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+/**
+ * Deterministic illustrative unavailability per date so availability
+ * visibly recalculates when the date changes (demo only, not live).
+ */
+function illustrativeUnavailableForDate(
+  iso: string,
+  starts: string[]
+): Set<string> {
+  const { y, m0, d } = parseISODate(iso);
+  const seed = y * 372 + m0 * 31 + d * 7;
+  const out = new Set<string>();
+  // Always include configured examples on some days + deterministic pseudo-random picks
+  for (let i = 0; i < starts.length; i++) {
+    const s = starts[i];
+    // hash day + start
+    const h = seed + timeStringToMinutes(s);
+    if (h % 3 !== 0) out.add(s);
+  }
+  starts.forEach((s, idx) => {
+    const h = (seed * 13 + idx * 29 + timeStringToMinutes(s)) % 5;
+    if (h === 0) out.add(s);
+  });
+  // Extra deterministic picks: every 4th slot by index
+  starts.forEach((s, idx) => {
+    if ((seed + idx * 17) % 4 === 0) out.add(s);
+  });
+  return out;
+}
+
+/** Build a Date (local) for a given ISO date + "HH:MM" start. */
+function slotDateTime(iso: string, t24: string): Date {
+  const { y, m0, d } = parseISODate(iso);
+  const [h, m] = t24.split(":").map(Number);
+  return new Date(y, m0, d, h, m, 0, 0);
+}
+
+export function generateSlotsForDate(
+  isoDate: string,
+  now = new Date()
+): BookingSlot[] {
+  const duration = KICKZONE.bookingDurationMinutes; // fixed 90
+  const open = timeStringToMinutes(KICKZONE.openingTime);
+  const close = timeStringToMinutes(KICKZONE.closingTime);
+  const interval = KICKZONE.slotIntervalMinutes;
+
+  const starts: string[] = [];
+  for (let t = open; t + duration <= close; t += interval) {
+    starts.push(minutesToTimeString(t));
+  }
+
+  const unavailable = illustrativeUnavailableForDate(
+    isoDate,
+    starts
+  );
+  // Also force configured examples when they coincide with a generated start
+  for (const s of KICKZONE.illustrativeUnavailableStarts) {
+    if (starts.includes(s)) {
+      // Only mark on alternating days so it still varies
+      const { d } = parseISODate(isoDate);
+      if ((d + timeStringToMinutes(s)) % 2 === 0) unavailable.add(s);
+    }
+  }
+
+  const todayISO = getDhakaTodayISO(now);
+
+  return starts.map((start) => {
+    const end = minutesToTimeString(timeStringToMinutes(start) + duration);
+    let status: BookingSlot["status"] = "available";
+    if (unavailable.has(start)) status = "unavailable";
+    // Disable past slots for today
+    if (isoDate === todayISO) {
+      const endDt = slotDateTime(isoDate, end);
+      // If end is midnight edge (e.g. 23:00 end exactly) still compare correctly.
+      // For slots where end < start (overnight) — not applicable here since we exclude past-close.
+      if (endDt.getTime() <= now.getTime()) status = "past";
+    }
+    // Past dates handled by calendar disabling; but guard anyway
+    if (isoDate < todayISO) status = "past";
+    return {
+      start,
+      end,
+      startDisplay: to12hDisplay(start),
+      endDisplay: to12hDisplay(end),
+      status,
+    };
+  });
+}
