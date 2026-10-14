@@ -278,7 +278,7 @@ export function LocationContact() {
         <div className="overflow-hidden rounded-2xl border border-[#2B3237]">
           <iframe
             title="Kick-Zone Mirpur 12 map"
-            src="https://www.google.com/maps?q=Mirpur+12+Dhaka+Bangladesh&output=embed"
+            src="https://www.google.com/maps?q=Eastern+Housing+Phase-2+Pallabi+Mirpur-12+Dhaka&output=embed"
             className="h-72 w-full"
             loading="lazy"
           />

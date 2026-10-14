@@ -1,10 +1,13 @@
 import { KICKZONE } from "@/config/kickzone";
 import { timeStringToMinutes, to12hDisplay } from "@/lib/booking/availability";
 
-/** Day rate applies before nightStartsAt; night rate at/after it. */
+/** Day rate applies before nightStartsAt; night rate at/after it.
+ * Early-morning slots after midnight (before opening) belong to the night. */
 export function isNightStart(start24: string): boolean {
+  const t = timeStringToMinutes(start24);
   return (
-    timeStringToMinutes(start24) >= timeStringToMinutes(KICKZONE.nightStartsAt)
+    t >= timeStringToMinutes(KICKZONE.nightStartsAt) ||
+    t < timeStringToMinutes(KICKZONE.openingTime)
   );
 }
 

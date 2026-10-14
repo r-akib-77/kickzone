@@ -25,7 +25,7 @@ export default function ContactPage() {
               <MapPin size={16} className="text-[#39FF14]" /> {KICKZONE.location.full}
             </p>
             <p className="mt-1 flex items-center gap-2 text-sm text-[#A5ADB4]">
-              <Clock size={16} className="text-[#39FF14]" /> Illustrative hours: 8:00 AM – 11:00 PM
+              <Clock size={16} className="text-[#39FF14]" /> Open daily: 6:00 AM – 3:30 AM
             </p>
             <a
               href={KICKZONE.phone.telHref}
@@ -70,7 +70,7 @@ export default function ContactPage() {
         <div className="overflow-hidden rounded-2xl border border-[#2B3237]">
           <iframe
             title="Kick-Zone Mirpur 12 map"
-            src="https://www.google.com/maps?q=Mirpur+12+Dhaka+Bangladesh&output=embed"
+            src="https://www.google.com/maps?q=Eastern+Housing+Phase-2+Pallabi+Mirpur-12+Dhaka&output=embed"
             className="h-96 w-full"
             loading="lazy"
           />

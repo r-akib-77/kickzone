@@ -6,9 +6,9 @@ export const KICKZONE = {
     city: "Dhaka",
     country: "Bangladesh",
     short: "Mirpur 12, Dhaka",
-    full: "Mirpur 12, Dhaka, Bangladesh",
+    full: "Block-M, Plot-7, Eastern Housing Phase-2, Pallabi, Mirpur-12, Dhaka",
     mapsSearchUrl:
-      "https://www.google.com/maps/search/?api=1&query=Kick-Zone+Mirpur+12+Dhaka+Bangladesh",
+      "https://www.google.com/maps/search/?api=1&query=Block-M+Plot-7+Eastern+Housing+Phase-2+Pallabi+Mirpur-12+Dhaka",
   },
   phone: {
     display: "01973-613818",
@@ -26,25 +26,42 @@ export const KICKZONE = {
   bookingDurationMinutes: 90 as const,
   bookingDurationLabel: "1 Hour 30 Minutes",
 
-  // Illustrative demo pricing (NOT confirmed as the real price)
-  // Day slots start below nightStartsAt; night slots start at/after it.
-  daySessionPriceBDT: 3000,
+  // Official slot-chart pricing: day slots 1–7 before 5 PM, night slots 8–14 from 5 PM.
+  daySessionPriceBDT: 2500,
   nightSessionPriceBDT: 4000,
+  // Slots starting at or after this time (24h "HH:MM") are night slots.
   nightStartsAt: "17:00",
-  sessionPriceLabel: "from ৳3,000",
+  sessionPriceLabel: "from ৳2,500",
   priceNote:
-    "Illustrative demo prices — day slots (before 5 PM) ৳3,000, night slots (5 PM onwards) ৳4,000. Contact Kick-Zone at 01973-613818 to confirm actual prices.",
+    "Official slot-chart prices — day slots (1–7) ৳2,500, night slots (8–14) ৳4,000. Contact Kick-Zone at 01973-613818 to confirm.",
 
-  // Illustrative demo operating hours (NOT confirmed)
-  openingTime: "08:00",
-  closingTime: "23:00",
+  // Official daily timetable from the Kick-Zone slot chart (14 fixed 90-min slots).
+  // Slot 12 ends after midnight; slots 13–14 run after midnight.
+  openingTime: "06:00",
+  closingTime: "03:30",
   slotIntervalMinutes: 90,
+  dailySlots: [
+    { start: "06:00", end: "07:30" }, // 1 Day
+    { start: "07:30", end: "09:00" }, // 2 Day
+    { start: "09:00", end: "10:30" }, // 3 Day
+    { start: "10:30", end: "12:00" }, // 4 Day
+    { start: "12:00", end: "13:30" }, // 5 Day
+    { start: "14:00", end: "15:30" }, // 6 Day
+    { start: "15:30", end: "17:00" }, // 7 Day
+    { start: "17:00", end: "18:30" }, // 8 Night
+    { start: "18:30", end: "20:00" }, // 9 Night
+    { start: "20:00", end: "21:30" }, // 10 Night
+    { start: "21:30", end: "23:00" }, // 11 Night
+    { start: "23:00", end: "00:30" }, // 12 Night (ends next day)
+    { start: "00:30", end: "02:00" }, // 13 Night (next day)
+    { start: "02:00", end: "03:30" }, // 14 Night (next day)
+  ],
   hoursNote:
-    "Illustrative demo hours (8:00 AM – 11:00 PM). Actual opening hours may differ — please call to confirm.",
+    "Open daily 6:00 AM – 3:30 AM (14 fixed slots) per the official Kick-Zone slot chart.",
 
   // Illustrative demo-unavailable slot start times (24h "HH:MM").
   // These are static examples; per-date variation is generated deterministically in lib.
-  illustrativeUnavailableStarts: ["13:30", "18:30"],
+  illustrativeUnavailableStarts: ["12:00", "18:30"],
 
   facilities: [
     {

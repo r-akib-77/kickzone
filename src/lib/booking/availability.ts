@@ -89,11 +89,48 @@ function illustrativeUnavailableForDate(
   return out;
 }
 
-/** Build a Date (local) for a given ISO date + "HH:MM" start. */
-function slotDateTime(iso: string, t24: string): Date {
+export interface TimetableSlot {
+  number: number;
+  start: string;
+  end: string;
+  startDisplay: string;
+  endDisplay: string;
+  startNextDay: boolean;
+  endNextDay: boolean;
+  isNight: boolean;
+}
+
+/** Official 14-slot daily timetable with display + next-day flags. */
+export function getDailyTimetable(): TimetableSlot[] {
+  const openMin = timeStringToMinutes(KICKZONE.openingTime);
+  const nightMin = timeStringToMinutes(KICKZONE.nightStartsAt);
+  return KICKZONE.dailySlots.map((s, i) => {
+    const startMin = timeStringToMinutes(s.start);
+    const endMin = timeStringToMinutes(s.end);
+    // Early-morning starts (before opening) run after midnight of the selected date
+    const startNextDay = startMin < openMin;
+    // Ends at/before midnight wrap to the next day
+    const endNextDay = endMin <= startMin;
+    return {
+      number: i + 1,
+      start: s.start,
+      end: s.end,
+      startDisplay: to12hDisplay(s.start),
+      endDisplay: to12hDisplay(s.end),
+      startNextDay,
+      endNextDay,
+      isNight: startMin >= nightMin || startNextDay,
+    };
+  });
+}
+
+/** Build a Date (local) for a given ISO date + "HH:MM" start, optionally next day. */
+function slotDateTime(iso: string, t24: string, nextDay = false): Date {
   const { y, m0, d } = parseISODate(iso);
+  const base = new Date(y, m0, d);
+  if (nextDay) base.setDate(base.getDate() + 1);
   const [h, m] = t24.split(":").map(Number);
-  return new Date(y, m0, d, h, m, 0, 0);
+  return new Date(base.getFullYear(), base.getMonth(), base.getDate(), h, m, 0, 0);
 }
 
 export function generateSlotsForDate(
@@ -101,20 +138,14 @@ export function generateSlotsForDate(
   now = new Date()
 ): BookingSlot[] {
   const duration = KICKZONE.bookingDurationMinutes; // fixed 90
-  const open = timeStringToMinutes(KICKZONE.openingTime);
-  const close = timeStringToMinutes(KICKZONE.closingTime);
-  const interval = KICKZONE.slotIntervalMinutes;
-
-  const starts: string[] = [];
-  for (let t = open; t + duration <= close; t += interval) {
-    starts.push(minutesToTimeString(t));
-  }
+  const timetable = getDailyTimetable();
+  const starts = timetable.map((t) => t.start);
 
   const unavailable = illustrativeUnavailableForDate(
     isoDate,
     starts
   );
-  // Also force configured examples when they coincide with a generated start
+  // Also force configured examples when they coincide with a timetable start
   for (const s of KICKZONE.illustrativeUnavailableStarts) {
     if (starts.includes(s)) {
       // Only mark on alternating days so it still varies
@@ -125,24 +156,24 @@ export function generateSlotsForDate(
 
   const todayISO = getDhakaTodayISO(now);
 
-  return starts.map((start) => {
-    const end = minutesToTimeString(timeStringToMinutes(start) + duration);
+  return timetable.map((t) => {
+    // Sanity: every configured slot must be exactly 90 minutes
+    const startDt = slotDateTime(isoDate, t.start, t.startNextDay);
+    const endDt = new Date(startDt.getTime() + duration * 60000);
     let status: BookingSlot["status"] = "available";
-    if (unavailable.has(start)) status = "unavailable";
-    // Disable past slots for today
-    if (isoDate === todayISO) {
-      const endDt = slotDateTime(isoDate, end);
-      // If end is midnight edge (e.g. 23:00 end exactly) still compare correctly.
-      // For slots where end < start (overnight) — not applicable here since we exclude past-close.
-      if (endDt.getTime() <= now.getTime()) status = "past";
-    }
+    if (unavailable.has(t.start)) status = "unavailable";
+    // Disable slots whose end time has already passed (covers today + past dates)
+    if (endDt.getTime() <= now.getTime()) status = "past";
     // Past dates handled by calendar disabling; but guard anyway
     if (isoDate < todayISO) status = "past";
     return {
-      start,
-      end,
-      startDisplay: to12hDisplay(start),
-      endDisplay: to12hDisplay(end),
+      number: t.number,
+      start: t.start,
+      end: t.end,
+      startDisplay: t.startDisplay,
+      endDisplay: t.endDisplay,
+      startNextDay: t.startNextDay,
+      endNextDay: t.endNextDay,
       status,
     };
   });
