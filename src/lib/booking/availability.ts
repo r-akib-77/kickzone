@@ -63,6 +63,7 @@ export function dateDisplayLong(iso: string): string {
 /**
  * Deterministic illustrative unavailability per date so availability
  * visibly recalculates when the date changes (demo only, not live).
+ * Keeps most of the day open: exactly two demo-booked slots per date.
  */
 function illustrativeUnavailableForDate(
   iso: string,
@@ -71,21 +72,11 @@ function illustrativeUnavailableForDate(
   const { y, m0, d } = parseISODate(iso);
   const seed = y * 372 + m0 * 31 + d * 7;
   const out = new Set<string>();
-  // Always include configured examples on some days + deterministic pseudo-random picks
-  for (let i = 0; i < starts.length; i++) {
-    const s = starts[i];
-    // hash day + start
-    const h = seed + timeStringToMinutes(s);
-    if (h % 3 !== 0) out.add(s);
+  const n = starts.length;
+  if (n > 0) {
+    out.add(starts[((seed % n) + n) % n]);
+    if (n > 1) out.add(starts[(((seed * 3 + 5) % n) + n) % n]);
   }
-  starts.forEach((s, idx) => {
-    const h = (seed * 13 + idx * 29 + timeStringToMinutes(s)) % 5;
-    if (h === 0) out.add(s);
-  });
-  // Extra deterministic picks: every 4th slot by index
-  starts.forEach((s, idx) => {
-    if ((seed + idx * 17) % 4 === 0) out.add(s);
-  });
   return out;
 }
 
