@@ -43,7 +43,7 @@ export default function Header() {
                 href={l.href}
                 className={`text-sm font-semibold transition-colors hover:text-[#39FF14] ${
                   active ? "text-[#39FF14]" : "text-[#A5ADB4]"
-                }`}
+                }${l.href === "/book" ? " animate-nav-blink" : ""}`}
               >
                 {l.label}
               </Link>

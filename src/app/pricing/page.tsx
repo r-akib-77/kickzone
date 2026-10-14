@@ -93,16 +93,6 @@ export default function PricingPage() {
         Slots 12–14 run past midnight. Match Duration: 1 Hour 30 Minutes · per 90-minute session.
       </p>
 
-      <div className="mx-auto mt-6 max-w-2xl overflow-hidden rounded-2xl border border-[#2B3237]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/slot-chart.jpg"
-          alt="Kick-Zone official slot details chart — 14 slots, day 2,500 tk, night 4,000 tk"
-          className="w-full object-cover"
-          loading="lazy"
-        />
-      </div>
-
       <div className="mx-auto mt-4 max-w-2xl rounded-3xl border border-[#2B3237] bg-[#111416] p-6 text-center">
         <ul className="space-y-2 text-left text-sm">
           {[

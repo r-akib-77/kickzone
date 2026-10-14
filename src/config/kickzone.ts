@@ -68,48 +68,42 @@ export const KICKZONE = {
       title: "FIFA-Grade Artificial Turf",
       description:
         "Consistent bounce, cushioned underlay and all-weather indoor surface built for fast 5v5 / 7v7 football.",
-      image:
-        "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?q=80&w=1200&auto=format&fit=crop",
+      image: "/venue-6.jpg",
       icon: "turf",
     },
     {
       title: "Pro Floodlighting",
       description:
         "Bright, even LED floodlights for night sessions with zero dark spots on the pitch.",
-      image:
-        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop",
+      image: "/venue-4.jpg",
       icon: "floodlight",
     },
     {
       title: "Changing & Shower Rooms",
       description:
         "Clean changing areas to gear up before kickoff and freshen up after full-time.",
-      image:
-        "https://images.unsplash.com/photo-1571902943202-507ec2618e38?q=80&w=1200&auto=format&fit=crop",
+      image: "/venue-2.jpg",
       icon: "shirt",
     },
     {
       title: "Match Footballs & Bibs",
       description:
         "Quality match balls, bibs and cones available so your squad can start playing right away.",
-      image:
-        "https://images.unsplash.com/photo-1614632537190-23e4145e646a?q=80&w=1200&auto=format&fit=crop",
+      image: "/venue-5.jpg",
       icon: "ball",
     },
     {
       title: "Spectator Zone",
       description:
         "Sideline seating for friends and subs to watch the game up close in a safe indoor hall.",
-      image:
-        "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=1200&auto=format&fit=crop",
+      image: "/venue-7.jpg",
       icon: "users",
     },
     {
       title: "Drinking Water & First Aid",
       description:
         "Hydration and basic first-aid support on site so you can play hard and stay safe.",
-      image:
-        "https://images.unsplash.com/photo-1526401485004-46910ecc8e51?q=80&w=1200&auto=format&fit=crop",
+      image: "/venue-1.jpg",
       icon: "safety",
     },
   ],

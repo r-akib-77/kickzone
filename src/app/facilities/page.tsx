@@ -22,7 +22,7 @@ export default function FacilitiesPage() {
         {KICKZONE.facilities.map((f) => (
           <article key={f.title} className="card-hover overflow-hidden rounded-2xl border border-[#2B3237] bg-[#111416]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={f.image} alt={`${f.title} (illustrative stock photo)`} loading="lazy" className="h-48 w-full object-cover" />
+            <img src={f.image} alt={`${f.title} at Kick-Zone`} loading="lazy" className="h-48 w-full object-cover" />
             <div className="p-5">
               <h2 className="font-bold text-white">{f.title}</h2>
               <p className="mt-1 text-sm text-[#A5ADB4]">{f.description}</p>
