@@ -1,216 +1,302 @@
-# Kick-Zone --- Football Turf Website
+<div align="center">
 
-A responsive website for **Kick-Zone**, an outdoor football turf in
-Mirpur 12, Dhaka, Bangladesh. The site introduces the venue, presents
-facilities and pricing, showcases turf photos, and guides visitors
-through a demo booking flow.
+# KICK-ZONE
+
+### Own the pitch. Your game. Your team. Your zone.
+
+A football turf website concept for **Kick-Zone, Mirpur 12, Dhaka** — built to help players explore the venue, understand session pricing, browse turf photography, and walk through a clear online booking experience.
+
+[**Visit the Live Demo ↗**](https://kickzone-2sm.pages.dev/)
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-111827?style=for-the-badge)](https://kickzone-2sm.pages.dev/)
+[![Cloudflare Pages](https://img.shields.io/badge/Hosted%20on-Cloudflare%20Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
+[![Football Turf](https://img.shields.io/badge/Category-Football%20Turf-16A34A?style=for-the-badge)](https://kickzone-2sm.pages.dev/)
+
+</div>
+
+---
+
+## Contents
+
+- [Overview](#-overview)
+- [Project Goals](#-project-goals)
+- [Features](#-features)
+- [Booking Experience](#-booking-experience)
+- [Pricing Display](#-pricing-display)
+- [Location and Contact](#-location-and-contact)
+- [Design Approach](#-design-approach)
+- [Technology](#-technology)
+- [Run Locally](#-run-locally)
+- [Deployment](#-deployment)
+- [Testing Checklist](#-testing-checklist)
+- [Future Improvements](#-future-improvements)
+- [Project Credits](#-project-credits)
+
+---
+
+## ⚽ Overview
+
+**KICK-ZONE** is a football turf website concept for an outdoor football facility in Mirpur 12, Dhaka. The website presents the venue, communicates session details, showcases turf imagery, and provides a guided booking interface for players and teams.
+
+The experience is designed around a simple goal: let a group of players find the information they need, choose a preferred session, and understand how to contact the venue to confirm availability.
 
 **Live website:** https://kickzone-2sm.pages.dev/
 
-> **Demo notice:** The current website describes booking availability
-> and prices as illustrative. Submitting the booking flow does not
-> reserve a real slot. Contact the venue to confirm current
-> availability, facilities, and pricing.
+### Project at a glance
 
-------------------------------------------------------------------------
+| Detail | Information |
+| --- | --- |
+| Project | KICK-ZONE |
+| Business type | Outdoor football turf |
+| Location displayed | Block-M, Plot-7, Eastern Housing Phase-2, Pallabi, Mirpur-12, Dhaka |
+| Intended audience | Football players, friend groups, and teams |
+| Session duration displayed | 90 minutes |
+| Day price displayed | ৳2,500 — illustrative demo price |
+| Night price displayed | ৳4,000 — illustrative demo price |
+| Deployment | Cloudflare Pages |
+| Website status | Demonstration website |
 
-## Table of Contents
+> **Important:** This is a demo website. The displayed prices and availability are illustrative. The booking flow does not reserve a real turf slot, and no real booking is created through the website. Contact the venue directly to verify current pricing and availability.
 
--   [Overview](#overview)
--   [Features](#features)
--   [Venue Information](#venue-information)
--   [Booking Flow](#booking-flow)
--   [Technology](#technology)
--   [Getting Started](#getting-started)
--   [Deployment](#deployment)
--   [Production Readiness](#production-readiness)
--   [Contact](#contact)
+---
 
-## Overview
+## 🎯 Project Goals
 
-Kick-Zone helps players and teams learn about the turf before arranging
-a football session. The website brings the main information together in
-one place:
+- **Make venue information accessible:** present location, session duration, pricing, and contact details in one place.
+- **Simplify booking discovery:** give visitors a clear path to the booking interface.
+- **Showcase the facility:** use a gallery to help visitors visualize the playing environment.
+- **Clarify session options:** distinguish daytime and nighttime pricing.
+- **Support mobile visitors:** make key actions, especially booking and calling, easy to find.
+- **Create a professional digital presence:** present the turf as a recognizable local sports destination.
 
--   Venue location and contact number
--   Session duration and illustrative day/night rates
--   Facility highlights
--   Photo gallery
--   A step-by-step booking interface
+---
 
-The site is currently presented as a demonstration website rather than a
-live reservation system.
+## ✨ Features
 
-## Features
+### 1. Hero and primary calls to action
+A football-focused introduction presents the KICK-ZONE identity and directs visitors toward booking or exploring the venue.
 
-### Venue landing page
+### 2. Facility overview
+A dedicated section introduces the outdoor turf and the intended 5-a-side and 7-a-side football experience.
 
--   Football-focused hero section and calls to action
--   Introduction to the Kick-Zone venue
--   Clear links to booking, facilities, pricing, gallery, and contact
-    sections
+### 3. Facilities showcase
+The page presents facility highlights such as artificial turf, floodlighting, and changing areas. These details are illustrative in the demo and should be confirmed with the venue before being relied upon.
 
-### Booking experience
+### 4. Guided booking interface
+The booking journey is presented as a sequence of simple steps: choose a date, select a 90-minute slot, enter contact details, and review a demo confirmation.
 
--   Date selection with past dates disabled
--   Fixed **90-minute** session duration
--   Automatically calculated session end time
--   Visitor details, including name and phone number
--   Optional team, player, and notes fields
--   In-browser form validation
--   Demo booking review and reference
+### 5. Session duration
+The displayed booking concept uses a fixed **90-minute session**, with the end time calculated from the selected start time.
 
-**Important:** The current flow does not check live availability,
-persist a reservation, or guarantee a booking.
+### 6. Day and night pricing
+The pricing section separates daytime sessions from nighttime sessions so visitors can quickly compare the displayed rates.
 
-### Facilities
+### 7. Turf gallery
+A visual gallery showcases football and turf imagery to give visitors a better sense of the playing environment.
 
-The website highlights the following facilities as illustrative
-examples: - Artificial football turf - Floodlighting for evening
-sessions - Changing and shower rooms
+### 8. Location and contact
+The site displays a Mirpur 12, Dhaka address and a tap-to-call phone number, alongside map and social links.
 
-Confirm the actual amenities directly with the venue before visiting.
+### 9. Responsive-oriented layout
+The content is structured for straightforward browsing across device sizes. Actual responsiveness should be validated on mobile, tablet, and desktop viewports.
 
-### Pricing
+---
 
-The website currently displays these illustrative prices for a 90-minute
-session:
+## 🗓️ Booking Experience
 
-  Session                    Displayed price
-  ------------------------ -----------------
-  Day --- before 5:00 PM              ৳2,500
-  Night --- from 5:00 PM              ৳4,000
+The demo presents the following user flow:
 
-These prices are for demonstration purposes and should be confirmed by
-phone.
+1. **Choose a date** — select a match day; past dates are described as disabled.
+2. **Choose a session** — select a 90-minute slot.
+3. **Enter contact details** — name and phone are required in the displayed flow; team details, player count, and notes are optional.
+4. **Review the booking** — check the session details before continuing.
+5. **See a demo reference** — the interface demonstrates a confirmation-style experience.
 
-### Gallery and contact
+### Demo limitations
 
--   Turf and match photography
--   Venue address
--   Click-to-call contact number
--   Links to social media and Google Maps
+- Availability is **not connected to a live turf schedule**.
+- The flow does **not** reserve a real session.
+- A demo reference is not proof of a confirmed booking.
+- Displayed rates and facility details are illustrative and may differ from current venue information.
+- No payment processing or persistent booking database is claimed by this README.
 
-## Venue Information
+To book an actual session, contact the venue and confirm the date, time, and price directly.
 
-  -----------------------------------------------------------------------
-  Detail                              Information
-  ----------------------------------- -----------------------------------
-  Venue                               Kick-Zone
+---
 
-  Type                                Outdoor football turf
+## 💰 Pricing Display
 
-  Location                            Block-M, Plot-7, Eastern Housing
-                                      Phase-2, Pallabi, Mirpur-12, Dhaka,
-                                      Bangladesh
+The live demo displays the following illustrative pricing:
 
-  Session duration                    90 minutes
+| Session | Displayed rate | Pricing note |
+| --- | ---: | --- |
+| Day session | ৳2,500 | Before 5:00 PM |
+| Night session | ৳4,000 | From 5:00 PM |
+| Duration | 90 minutes | Fixed session |
 
-  Phone                               01973-613818
-  -----------------------------------------------------------------------
+These figures document the demo interface only. Confirm current rates and available time slots with the venue before making plans.
 
-## Booking Flow
+---
 
-The website presents the following visitor journey:
+## 📍 Location and Contact
 
-1.  **Choose a date** in the booking calendar.
-2.  **Select a 90-minute slot.**
-3.  **Enter contact details** and any optional team information.
-4.  **Review the session** and submit the demo form.
+**KICK-ZONE — Mirpur 12, Dhaka**
 
-The final step is illustrative only. No real reservation is created.
+Block-M, Plot-7, Eastern Housing Phase-2, Pallabi, Mirpur-12, Dhaka.
 
-## Technology
+- **Phone displayed on the website:** 01973-613818
+- **Live demo:** https://kickzone-2sm.pages.dev/
+- **Maps:** use the map links available on the live website.
+- **Social links:** Facebook and Instagram links are provided on the website.
 
-The website is hosted on **Cloudflare Pages** at the live URL above. The
-source repository and package configuration were not available from the
-public website review, so the exact frontend framework, dependencies,
-and build commands should be confirmed from the project source before
-documenting them here.
+Contact details are reproduced from the demo website and should be verified before use.
 
-## Getting Started
+---
 
-Clone or download the project source code first. Then use the package
-manager and scripts defined by the repository.
+## 🎨 Design Approach
 
-For a JavaScript project that uses `package.json`, a typical workflow
-is:
+The site is organized around the needs of someone planning a football session.
 
-``` bash
-# Install dependencies using the package manager used by the project
-npm install
+- **Action-first layout:** booking and contact actions are prominent.
+- **Clear information hierarchy:** session duration, rates, location, and facilities are easy to scan.
+- **Sports-focused visual identity:** football imagery reinforces the purpose of the venue.
+- **Practical navigation:** booking, facilities, pricing, gallery, and contact sections have dedicated destinations.
+- **Mobile-conscious interactions:** phone and booking actions should remain convenient on small screens.
+- **Performance awareness:** optimized images and restrained effects help preserve a responsive experience.
 
-# Start the local development server if a "dev" script exists
-npm run dev
+---
 
-# Run the production build if a "build" script exists
-npm run build
+## 🧰 Technology
+
+The website is deployed on **Cloudflare Pages**. The exact frontend framework, styling tools, animation libraries, and dependency versions should be confirmed from the source repository before being documented as facts.
+
+| Layer | Details |
+| --- | --- |
+| Hosting | Cloudflare Pages |
+| Frontend framework | Confirm from repository |
+| Styling system | Confirm from repository |
+| Icons / animation | Confirm from repository |
+| Booking backend | No live booking integration is claimed |
+| Database / payment | Not asserted by this README |
+
+This keeps the documentation accurate and distinguishes the public demo experience from a production booking system.
+
+---
+
+## 💻 Run Locally
+
+To run the project locally, you need access to its source repository.
+
+### Prerequisites
+
+- Git
+- Node.js, if required by the project
+- The package manager specified by the repository's lockfile
+
+### 1. Clone the repository
+
+Replace the placeholders with the actual repository URL and directory name.
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd <YOUR_PROJECT_DIRECTORY>
 ```
 
-These are standard example commands, not verified project-specific
-scripts. Check `package.json` and the lockfile before running them. If
-the project uses pnpm, Yarn, or Bun, use the matching package manager
-instead.
+### 2. Install dependencies
 
-## Deployment
+For an npm-based project:
 
-The live site is deployed at:
+```bash
+npm install
+```
 
-https://kickzone-2sm.pages.dev/
+Use the package manager that matches the repository if it uses pnpm, Yarn, or Bun.
 
-For a Cloudflare Pages deployment:
+### 3. Start the development server
 
-1.  Connect the project repository to Cloudflare Pages, or configure the
-    existing Pages project.
-2.  Set the correct build command and output directory for the project's
-    framework.
-3.  Add any required environment variables in the Cloudflare Pages
-    project settings.
-4.  Deploy and test the production URL on mobile and desktop.
-5.  Verify navigation, contact links, images, form validation, and the
-    booking flow after deployment.
+Check the scripts in `package.json`. If a `dev` script is defined, run:
 
-The correct build command and output directory depend on the actual
-project configuration.
+```bash
+npm run dev
+```
 
-## Production Readiness
+Open the local address printed in the terminal.
 
-Before using the site to accept real bookings, consider implementing and
-testing the following:
+> These are standard example commands for a JavaScript frontend project, not verified commands for the current source repository. Confirm the repository URL, package manager, scripts, and build settings before using them.
 
--   **Live availability:** Read slot availability from a trusted backend
-    or scheduling system.
--   **Persistent reservations:** Store bookings in a database and return
-    a real booking ID.
--   **Conflict prevention:** Prevent two users from reserving the same
-    slot.
--   **Booking confirmation:** Send confirmation and cancellation details
-    by SMS, email, or another agreed channel.
--   **Admin management:** Let authorized staff manage slots, prices, and
-    reservations.
--   **Security:** Validate inputs on the server, apply rate limiting,
-    and protect administrative endpoints.
--   **Privacy:** Publish a privacy policy and explain how visitor
-    contact details are handled.
--   **Operational accuracy:** Confirm the real prices, opening hours,
-    facilities, and cancellation rules.
--   **Testing:** Test mobile layouts, keyboard accessibility, error
-    states, invalid inputs, and the complete booking lifecycle.
+---
 
-Do not advertise the demo form as a confirmed booking system until the
-backend and reservation workflow are implemented and verified.
+## ☁️ Deployment
 
-## Contact
+The public demo is hosted on Cloudflare Pages.
 
-**Kick-Zone --- Mirpur 12, Dhaka**
+For a repository-connected deployment:
 
--   **Address:** Block-M, Plot-7, Eastern Housing Phase-2, Pallabi,
-    Mirpur-12, Dhaka, Bangladesh
--   **Phone:** 01973-613818
--   **Website:** https://kickzone-2sm.pages.dev/
+1. Connect the Git repository to Cloudflare Pages.
+2. Select the correct framework preset.
+3. Configure the build command and output directory based on the source project.
+4. Add any required environment variables.
+5. Deploy the site.
+6. Verify the production URL and test the booking demo, navigation, contact links, and responsive layouts.
 
-Call the venue to confirm current rates, availability, and facilities.
+Official documentation: [Cloudflare Pages](https://developers.cloudflare.com/pages/)
 
-------------------------------------------------------------------------
+---
 
-© 2026 Kick-Zone. All rights reserved.
+## ✅ Testing Checklist
+
+- [ ] Homepage and navigation load correctly.
+- [ ] Booking interface opens and can be navigated.
+- [ ] Past dates and session choices behave as intended.
+- [ ] Required fields show validation feedback.
+- [ ] Demo confirmation clearly states that no real booking was created.
+- [ ] Pricing is labelled as illustrative.
+- [ ] Phone and map links work.
+- [ ] Gallery images load correctly.
+- [ ] Mobile, tablet, and desktop layouts are tested.
+- [ ] Keyboard navigation and focus states are usable.
+- [ ] No unexpected browser-console errors remain.
+
+---
+
+## 🚀 Future Improvements
+
+Potential improvements for turning the demo into a production-ready turf booking platform:
+
+- [ ] Live availability synchronized with the venue's schedule.
+- [ ] Persistent booking records and unique booking IDs.
+- [ ] Booking conflict prevention to avoid double reservations.
+- [ ] Admin dashboard for managing sessions, prices, and bookings.
+- [ ] Automated SMS or WhatsApp booking confirmations.
+- [ ] Secure online payments and refunds, if required.
+- [ ] Booking cancellation and rescheduling policies.
+- [ ] Verified facility information and updated gallery.
+- [ ] Analytics for booking conversion and visitor behavior.
+- [ ] Accessibility and performance audits.
+
+These are future possibilities, not current capabilities.
+
+---
+
+## 📌 Project Credits
+
+- **Project:** KICK-ZONE
+- **Live demo:** [kickzone-2sm.pages.dev](https://kickzone-2sm.pages.dev/)
+- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com/)
+- **Category:** Football turf / sports facility website
+
+### Asset and brand usage
+
+The KICK-ZONE name, logo, photography, and other creative assets belong to their respective owners. Obtain permission before reusing them.
+
+---
+
+<div align="center">
+
+### KICK-ZONE
+
+**Your game. Your team. Your zone.**
+
+[**Visit the Live Demo ↗**](https://kickzone-2sm.pages.dev/)
+
+</div>
